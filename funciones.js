@@ -1,10 +1,6 @@
 //+++++++++++++++  ZONA DE VARIABLES ++++++++++++++
-const divPortada = document.querySelector(".portada");
-const divJuego = document.querySelector(".juego");
-
-const ImgMenuSuperior = document.querySelector(".imgInstrucciones");
-const BtnSiguiente = document.querySelector(".imgBtnSiguiente");
-const BtnJugar = document.querySelector(".imgBtnJugar");
+const $Contenedor = document.querySelector(".contenedor");
+const $MenuSuperior = document.querySelector(".menu-superior");;
 
 const concepto1 = document.querySelector(".concepto1");
 const concepto2 = document.querySelector(".concepto2");
@@ -16,7 +12,7 @@ const definicion2 = document.querySelector(".definicion2");
 const definicion3 = document.querySelector(".definicion3");
 const definicion4 = document.querySelector(".definicion4");
 
-const imgContador = document.querySelector(".imgContador")
+const imgContador = document.querySelector(".img-contador")
 
 let ambiente = new Audio(src = "sonidos/ambiente.mp3");
 
@@ -28,40 +24,27 @@ let validaSeleccion = [0];
 //+++++++++++++++++++++ ZONA DE FUNCIONES ++++++++++++++++++++
 //+++++++++++++++++++++ Funcion oculta portada y visiviliza el juego +++++++++++++++++
 function inicioJuego() {
-    divPortada.addEventListener("click", function () {
-        divPortada.style.visibility = "hidden";
-        divJuego.style.visibility = "visible";
+    document.querySelector(".btn-jugar").addEventListener("click", function () {
+        $Contenedor.firstElementChild.classList.add("none");
+        $Contenedor.lastElementChild.classList.remove("none");
         ambiente.play();
     });
 }
-
 //++++++++++++++++ Eventos botones menu instrucciones y habilita menu juego +++++++++++++
 function eventosMenuInstrucciones() {
-    BtnSiguiente.addEventListener("click", function () {
-        ImgMenuSuperior.src = "imagenes/MenuSuperior/instrucciones2.png";
-        BtnSiguiente.style.visibility = "hidden"
-        BtnJugar.style.visibility = "visible"
+    document.querySelector(".menu-siguiente").addEventListener("click", function () {
+        $MenuSuperior.style.backgroundImage = "url('imagenes/MenuSuperior/instrucciones2.png')";
+        $MenuSuperior.firstElementChild.classList.add("none");
+        $MenuSuperior.lastElementChild.classList.remove("none");
     });
-    BtnSiguiente.addEventListener("mouseover", function () {
-        BtnSiguiente.src = "imagenes/MenuSuperior/Botones/boton-siguiente2.png"
-    });
-    BtnSiguiente.addEventListener("mouseleave", function () {
-        BtnSiguiente.src = "imagenes/MenuSuperior/Botones/boton-siguiente.png"
-    });
-
-    BtnJugar.addEventListener("click", function () {
-        ImgMenuSuperior.src = "imagenes/MenuSuperior/Circunferencia/circunferencia1.png"
-        BtnJugar.style.visibility = "hidden"
+    
+    document.querySelector(".menu-jugar").addEventListener("click", function(){
+        $MenuSuperior.style.backgroundImage = "url('imagenes/MenuSuperior/Circunferencia/circunferencia1.png')";
+        $MenuSuperior.lastElementChild.classList.add("none");
         eventosMenuJuego();
-    });
-    BtnJugar.addEventListener("mouseover", function () {
-        BtnJugar.src = "imagenes/MenuSuperior/Botones/boton-jugar2.png"
-    });
-    BtnJugar.addEventListener("mouseleave", function () {
-        BtnJugar.src = "imagenes/MenuSuperior/Botones/boton-jugar.png"
+        console.log("SI LLEGO");
     });
 }
-
 //+++++++++++++++ SE AGREGA EVENTOS A LAS IMAGENES DEL JUEGO Y SE VALIDA RESPUESTAS +++++++++++++++
 function eventosMenuJuego() {
     //IMAGENES CONCEPTOS 
@@ -81,7 +64,7 @@ function eventosMenuJuego() {
         seleciones[0] = 4;
         validar();
     });
-
+    
     // IMAGENES DEFINICIONES
     definicion1.addEventListener("click", function () {
         seleciones[1] = 6;
@@ -101,6 +84,7 @@ function eventosMenuJuego() {
     });
 }
 
+
 //++++++++++++++++++ FUNCION PARA VALIDAR RESPUESTAS CORRECTAS +++++++++++++++++++++++++ 
 function validar() {
     if (seleciones.length == 2) {
@@ -108,7 +92,7 @@ function validar() {
             if (seleciones[0] == 2) {
                 concepto2.src = "imagenes/MenuJuego/Conceptos/planeacion2.png"
                 definicion3.src = "imagenes/MenuJuego/Definicion/investigacion2.png"
-                ImgMenuSuperior.src = "imagenes/MenuSuperior/Circunferencia/circunferencia2.png";
+                $MenuSuperior.style.backgroundImage = "url('imagenes/MenuSuperior/Circunferencia/circunferencia2.png')";
                 seleciones = [];
                 if (!existeSeleccion(2)) {
                     sonidoAcierto();
@@ -119,8 +103,8 @@ function validar() {
             }
             if (seleciones[0] == 4) {
                 concepto4.src = "imagenes/MenuJuego/Conceptos/organizacion2.png"
-                definicion2.src = "imagenes/MenuJuego/Definicion/division2.png"
-                ImgMenuSuperior.src = "imagenes/MenuSuperior/Circunferencia/circunferencia3.png";
+                definicion2.src = "imagenes/MenuJuego/Definicion/division2.png"                
+                $MenuSuperior.style.backgroundImage = "url('imagenes/MenuSuperior/Circunferencia/circunferencia3.png')";
                 seleciones = [];
                 if (!existeSeleccion(4)) {
                     sonidoAcierto();
@@ -132,7 +116,7 @@ function validar() {
             if (seleciones[0] == 3) {
                 concepto3.src = "imagenes/MenuJuego/Conceptos/direccion2.png"
                 definicion1.src = "imagenes/MenuJuego/Definicion/ejecucion2.png"
-                ImgMenuSuperior.src = "imagenes/MenuSuperior/Circunferencia/circunferencia4.png"
+                $MenuSuperior.style.backgroundImage = "url('imagenes/MenuSuperior/Circunferencia/circunferencia4.png')";
                 seleciones = [];
                 if (!existeSeleccion(3)) {
                     sonidoAcierto();
@@ -144,7 +128,7 @@ function validar() {
             if (seleciones[0] == 1) {
                 concepto1.src = "imagenes/MenuJuego/Conceptos/control2.png"
                 definicion4.src = "imagenes/MenuJuego/Definicion/evaluacion2.png"
-                ImgMenuSuperior.src = "imagenes/MenuSuperior/Circunferencia/circunferencia5.png";
+                $MenuSuperior.style.backgroundImage = "url('imagenes/MenuSuperior/Circunferencia/circunferencia5.png')";
                 seleciones = [];
                 if (!existeSeleccion(1)) {
                     sonidoAcierto();
@@ -215,10 +199,10 @@ function final() {
     ambiente.pause();
     sonidoFinal();
     setTimeout(function () {
-        ImgMenuSuperior.src = "imagenes/MenuSuperior/felicitaciones.png";
+        $MenuSuperior.style.backgroundImage = "url('imagenes/MenuSuperior/felicitaciones.png')";
     }, 3000);
-    setTimeout(function () {
-        ImgMenuSuperior.src = "imagenes/MenuSuperior/derechos.png";
+    setTimeout(function () {        
+        $MenuSuperior.style.backgroundImage = "url('imagenes/MenuSuperior/derechos.png')";
     }, 7000);
 }
 

@@ -1,112 +1,119 @@
 * {
   padding: 0px;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 body {
   background-color: gray;
-  margin: 0;
 }
-
 /************CONTENEDOR PRINCIPAL *********************/
-.contenedorJuego {
-  padding: 0px;
-  width: 1000px;
+.contenedor {
+  position: relative;
+  width: 1100px;
   height: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 2rem auto;
   background-color: aqua;
+  overflow: hidden;
 }
 
 /***************CONTENEDOR PARA LA PORTADA ****************/
 .portada {
-  position: absolute;
-  top: 0;
-  visibility: visible;
+  width: 100%;
+  height: 100%;
+  background-image: url("imagenes/Portada.png");
+  background-size: cover;
 }
-
-.imgPortada {
-  width: 1000px;
-  height: 600px;
+.btn-jugar {
+  position: absolute;
+  width: 150px;
+  height: 200px;
+  bottom: 0;
+  right: 10px;
+  cursor: pointer;
 }
 
 /********************CONTENEDOR PARA INTERFAZ DEL JUEGO ************/
-.juego {
-  position: relative;
-  visibility: hidden;
+.contenedor-juego {
+  width: 100%;
+  height: 100%;
+  background-image: url("imagenes/Fondo.png");
+  background-size: cover;
+  background-position: center;
 }
-
-.imgFondo {
-  width: 1000px;
-  height: 600px;
-}
-
 /*************** MENU SUPERIOR INSTRUCCIONES ******************/
-.menuSuperior {
-  position: absolute;
-  top: 30px;
-  right: 65px;
-  width: 450px;
+.menu-superior {
+  width: 490px;
   height: 200px;
-}
-
-.imgInstrucciones {
-  width: 450px;
-  height: 200px;
-}
-
-.imgBtnSiguiente {
   position: absolute;
-  bottom: 0;
+  right: 75px;
+  top: 20px;
+  background-image: url("imagenes/MenuSuperior/instrucciones1.png");
+  background-size: cover;
+  background-position: center;
+}
+.menu-siguiente {
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  bottom: 0px;
   right: 150px;
+  background-image: url("imagenes/MenuSuperior/Botones/boton-siguiente.png");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  cursor: pointer;
 }
-
-.imgBtnJugar {
+.menu-siguiente:hover {
+  background-image: url("imagenes/MenuSuperior/Botones/boton-siguiente2.png");
+}
+.menu-jugar {
   position: absolute;
-  bottom: 0;
-  right: 70px;
-  visibility: hidden;
+  width: 90px;
+  height: 30px;
+  bottom: 0px;
+  right: 80px;
+  background-image: url("imagenes/MenuSuperior/Botones/boton-jugar.png");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.menu-jugar:hover {
+  background-image: url("imagenes/MenuSuperior/Botones/boton-jugar2.png");
 }
 
 /**************** MENU OPCIONES *****************/
-.menuOpciones {
-  width: 450px;
-  height: 330px;
+.menu-opciones {
+  width: 490px;
+  height: 350px;
   position: absolute;
-  bottom: 30px;
-  right: 65px;
+  bottom: 10px;
+  right: 70px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
 }
-
-.concepto1,
-.concepto2,
-.concepto3,
-.concepto4,
 .definicion1,
 .definicion2,
 .definicion3,
 .definicion4 {
-  width: 80%;
-  margin-right: auto;
-  margin-left: auto;
+  width: 90%;
 }
-
-.conceptos {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  align-items: center;
-}
-
+.conceptos,
 .definiciones {
-  display: grid;
+  display: flex;
+  padding: 0.5rem;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-around;
 }
-
 /****************IMAGEN CONTADOR ***************/
-.imgContador {
+.img-contador {
   position: absolute;
   width: 390px;
   height: 220px;
-  left: 20px;
-  bottom: -30px;
+  bottom: -38px;
+  left: 47px;
+}
+/* ********CLASES UTILITARIAS */
+.none {
+  display: none;
 }
